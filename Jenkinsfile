@@ -12,5 +12,17 @@ pipeline {
                 sh 'cat index.html'
             }
         }
+	stage('Test') {
+	    steps {
+		sh 'grep "Olha Malynovska" index.html'
+	    }
+        }
+	stage('Deploy') {
+	    steps {
+		sh '''
+		scp -o StringHostKeyChecking=no index.html ubuntu@3.108.219.146:/home/ubuntu
+		'''
+	    }
+	}
     }
 }
