@@ -19,9 +19,11 @@ pipeline {
         }
 	stage('Deploy') {
 	    steps {
-		sh '''
-		scp -o StrictHostKeyChecking=no index.html ubuntu@3.108.219.146:/home/ubuntu
-		'''
+		sshagent(['ec2-ssh-key']) {
+                    sh '''
+		    scp -o StrictHostKeyChecking=no index.html ubuntu@3.108.219.146:/home/ubuntu
+             	    '''
+	   	}
 	    }
 	}
     }
