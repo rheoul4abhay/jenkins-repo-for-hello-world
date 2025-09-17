@@ -14,7 +14,7 @@ pipeline {
         }
 		stage('Test') {
 	    	steps {
-			sh 'grep "Abhay Shrivastava" index.html'
+			sh 'grep "John Doe" index.html'
 			}
         }
 		stage('Deploy') {
